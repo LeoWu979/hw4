@@ -57,11 +57,19 @@ while (1) {
 			delta = -delta;
 			sign = -1;
 		}
-		if (sign == -1) 
-			car.turn_new(30,30+delta);
-		else	
-			car.turn_new(30+delta,30);
-		ThisThread::sleep_for(50ms);
+		if (sign == -1) {
+			if (delta <= 10) delta *= 2;			
+			car.turn_new(30,35+delta,1, 1);
+			ThisThread::sleep_for(100ms);
+		}	
+		else {	
+//			if (delta <= 10) delta *= 3;		
+			car.turn_new(30+delta/4,30, 1 ,1);
+			ThisThread::sleep_for(100ms);
+		}
+
+
+//		ThisThread::sleep_for(50ms);
 /*
 		if (delta > 0 && delta <= 5) {
 			if (sign == 1) {
@@ -103,7 +111,7 @@ while (1) {
 	
 	}
 	if (str1[0] == 'B') car.goStraight(0);
-	ThisThread::sleep_for(150ms);
+	ThisThread::sleep_for(20ms);
 }
 
 }

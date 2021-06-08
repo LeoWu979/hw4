@@ -65,15 +65,15 @@ void park(Arguments *in, Reply *out)   {
     // Have code here to call another RPC function to wake up specific led or close it.
     steps = 0;
     last = 0;
-    car.turn_new(-30, -30, 1, 0.9);
-    while(steps*6.5*3.14/32 < x1 - 2.7) {
+    car.turn_new(-30, -30, 1, 0.84);
+    while(steps*6.5*3.14/32 < x1 - 0.5) {
         // printf("encoder = %d\r\n", steps);
         ThisThread::sleep_for(100ms);
     }
     car.stop();
     if (z1 == 1) {
         car.turn(-100,0.1);
-        ThisThread::sleep_for(1100ms);
+        ThisThread::sleep_for(970ms);
     }
     else {
         car.turn(-100,-0.1);
@@ -84,9 +84,9 @@ void park(Arguments *in, Reply *out)   {
 
     steps = 0;
     last = 0;
-    car.turn_new(-30, -30, 1, 0.9);
+    car.turn_new(-30, -30, 1, 0.84);
     if (z1 == 2) sign = 3;
-    while(steps*6.5*3.14/32 < y1 + 4 + sign) {
+    while(steps*6.5*3.14/32 < y1 + 8) {
         // printf("encoder = %d\r\n", steps);
         ThisThread::sleep_for(100ms);
     }
